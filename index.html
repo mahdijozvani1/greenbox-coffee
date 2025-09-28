@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کافی شاپ رویا - دنیایی از آرامش و طعم</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* تنظیمات کلی و فونت */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazir', 'Tanha', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* رنگ‌های پسته‌ای */
+        :root {
+            --pistachio-light: #e8f5e8;
+            --pistachio-medium: #a8d5a8;
+            --pistachio-dark: #8c9e7e;
+            --pistachio-darker: #6b7b5e;
+        }
+
+        /* هدر و نوار ناوبری */
+        header {
+            background: linear-gradient(135deg, var(--pistachio-light) 0%, #ffffff 100%);
+            box-shadow: 0 4px 15px rgba(140, 158, 126, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--pistachio-darker);
+            background: var(--pistachio-light);
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .logo h1 {
+            margin: 0;
+            color: var(--pistachio-darker);
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--pistachio-darker);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--pistachio-medium);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a i {
+            font-size: 1.2rem;
+        }
+
+        /* بخش اصلی (Hero) */
+        .hero {
+            background: linear-gradient(rgba(232, 245, 232, 0.9), rgba(232, 245, 232, 0.9)), 
+                        url('https://images.unsplash.com/photo-1542181961-9590d0c79dab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(140, 158, 126, 0.3);
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--pistachio-darker);
+            background: linear-gradient(45deg, var(--pistachio-darker), var(--pistachio-medium));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* دکمه */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(45deg, var(--pistachio-medium), var(--pistachio-darker));
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(140, 158, 126, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(140, 158, 126, 0.4);
+            background: linear-gradient(45deg, var(--pistachio-darker), var(--pistachio-medium));
+        }
+
+        /* بخش‌های اصلی */
+        section {
+            padding: 6rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--pistachio-darker);
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--pistachio-medium), var(--pistachio-darker));
+            border-radius: 2px;
+        }
+
+        /* بخش منو */
+        .menu {
+            background: linear-gradient(135deg, var(--pistachio-light) 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            opacity: 0.05;
+            background-size: cover;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .menu-category {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(140, 158, 126, 0.15);
+            transition: transform 0.3s ease;
+            border: 2px solid var(--pistachio-light);
+        }
+
+        .menu-category:hover {
+            transform: translateY(-10px);
+            border-color: var(--pistachio-medium);
+        }
+
+        .menu-category h3 {
+            color: var(--pistachio-darker);
+            border-bottom: 3px solid var(--pistachio-light);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-category h3 i {
+            color: var(--pistachio-medium);
+        }
+
+        .menu-items {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-items li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            border-bottom: 2px dashed var(--pistachio-light);
+            transition: all 0.3s ease;
+        }
+
+        .menu-items li:hover {
+            background-color: var(--pistachio-light);
+            padding: 1.2rem 1rem;
+            border-radius: 10px;
+            transform: scale(1.02);
+        }
+
+        .item-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .item-name i {
+            color: var(--pistachio-medium);
+            font-size: 0.9rem;
+        }
+
+        .item-price {
+            color: var(--pistachio-darker);
+            font-weight: bold;
+            font-size: 1.2rem;
+            background: var(--pistachio-light);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        /* گالری تصاویر */
+        .gallery {
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            height: 250px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* بخش تماس */
+        .contact {
+            background: linear-gradient(135deg, var(--pistachio-light) 0%, #09363257759 100%);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(140, 158, 126, 0.1);
+            border: 2px solid var(--pistachio-light);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--pistachio-darker);
+            margin-bottom: 1rem;
+            background: var(--pistachio-light);
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(140, 158, 126, 0.15);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--pistachio-light);
+            border-radius: 15px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--pistachio-medium);
+        }
+
+        .contact-form button {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        /* پاورقی */
+        footer {
+            background: linear-gradient(135deg, var(--pistachio-darker) 0%, var(--pistachio-medium) 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--pistachio-darker);
+            transform: translateY(-3px);
+        }
+
+        /* رسپانسیو برای موبایل */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav-links li {
+                margin-left: 0;
+            }
+
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- نوار هدر و منو -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-coffee"></i>
+                <h1>GreenBox Coffee</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fas fa-home"></i> خانه</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> درباره ما</a></li>
+                <li><a href="#menu"><i class="fas fa-utensils"></i> منو</a></li>
+                <li><a href="#gallery"><i class="fas fa-images"></i> گالری</a></li>
+                <li><a href="#contact"><i class="fas fa-phone"></i> تماس با ما</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- بخش اصلی (Hero Section) -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>به گرین باکس خوش آمدید</h2>
+            <p>  به کافه عباس ماچالا و براریل گرتی خوش امدید  </p>
+            <a href="#menu" class="btn">
+                <i class="fas fa-book-open"></i>
+                مشاهده منو
+            </a>
+        </div>
+    </section>
+
+    <!-- بخش درباره ما -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About GreenBOX</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.2rem; line-height: 1.8; color: #555;">به دورهمی های بچه های حرارتی خوش امدی برای درخواست جنس چشمک بزنید ااااااااا
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش منو -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2>منوی ویژه کافی شاپ</h2>
+            <div class="menu-grid">
+                <div class="menu-category">
+                    <h3><i class="fas fa-coffee"></i> قهوه‌های ویژه</h3>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name"><i class="fas fa-seedling"></i> اسپرسو سینگل عربیکا</span>
+                            <span class="item-price">65,000 تومان</span>
+                        </li>
+
+                        <li>
+                            <span class="item-name"><i class="fas fa-mug-hot"></i> آمریکانو</span>
+                            <span class="item-price">77,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-coffee"></i> لاته</span>
+                            <span class="item-price">65,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-cloud"></i> کاپوچینو</span>
+                            <span class="item-price">60,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-cookie"></i> موکا</span>
+                            <span class="item-price">70,000 تومان</span>
+                        </li>
+                    </ul>
+                </div>
+
+                 <div class="menu-category">
+                    <h3><i class="fas fa-utensils"></i> فراپه  </h3>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name"><i class="fas fa-bread-slice"></i> ساندویچ پنیر و گردو</span>
+                            <span class="item-price">120,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-pasta"></i> پاستا آلفردو</span>
+                            <span class="item-price">180,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-carrot"></i> سالاد سزار</span>
+                            <span class="item-price">90,000 تومان</span>
+                        </li>
+                    </ul>
+                </div>
+
+                 <div class="menu-category">
+                    <h3><i class="fas fa-utensils"></i> نوشیدنی سرد   </h3>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name"><i class="fas fa-bread-slice"></i> ساندویچ پنیر و گردو</span>
+                            <span class="item-price">120,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-pasta"></i> پاستا آلفردو</span>
+                            <span class="item-price">180,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-carrot"></i> سالاد سزار</span>
+                            <span class="item-price">90,000 تومان</span>
+                        </li>
+                    </ul>
+                </div>
+
+                 <div class="menu-category">
+                    <h3><i class="fas fa-utensils"></i> اسموتی   </h3>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name"><i class="fas fa-bread-slice"></i> ساندویچ پنیر و گردو</span>
+                            <span class="item-price">120,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-pasta"></i> پاستا آلفردو</span>
+                            <span class="item-price">180,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-carrot"></i> سالاد سزار</span>
+                            <span class="item-price">90,000 تومان</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="menu-category">
+                    <h3><i class="fas fa-leaf"></i> دمنوش ها و چای</h3>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name"><i class="fas fa-teapot"></i> چای سیاه</span>
+                            <span class="item-price">30,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-leaf"></i> چای سبز</span>
+                            <span class="item-price">35,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-heart"></i> چای اولانگ</span>
+                            <span class="item-price">40,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-spa"></i> دمنوش بابونه</span>
+                            <span class="item-price">35,000 تومان</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="menu-category">
+                    <h3><i class="fas fa-utensils"></i> شیک  </h3>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name"><i class="fas fa-bread-slice"></i> ساندویچ پنیر و گردو</span>
+                            <span class="item-price">120,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-pasta"></i> پاستا آلفردو</span>
+                            <span class="item-price">180,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-carrot"></i> سالاد سزار</span>
+                            <span class="item-price">90,000 تومان</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="menu-category">
+                    <h3><i class="fas fa-ice-cream"></i> قهوه سرد </h3>
+                    <ul class="menu-items">
+                        <li>
+                            <span class="item-name"><i class="fas fa-cake"></i> چیزکیک</span>
+                            <span class="item-price">85,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-cookie-bite"></i> تیرامیسو</span>
+                            <span class="item-price">95,000 تومان</span>
+                        </li>
+                        <li>
+                            <span class="item-name"><i class="fas fa-muffin"></i> مافین شکلاتی</span>
+                            <span class="item-price">45,000 تومان</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- گالری تصاویر -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>گالری کافه </h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://s6.uupload.ir/files/img_20250919_014657_ai44.jpg" alt="فضای داخلی کافی شاپ">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://s6.uupload.ir/files/img_2405_mrza.jpg" alt="تهیه قهوه">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://uupload.ir/view/img_2415_kt0v.heic/" alt="دسرهای ویژه">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="فضای بیرونی">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش تماس با ما -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>تماس با ما</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>آدرس</h3>
+                    <p>     تهران اندیشه - شهرک صدف خ توحید جنوبی بقل کلوپ جواد </p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>تلفن</h3>
+                    <p>09363257759</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>ساعات کاری</h3>
+                    <p>هر روز از ۸ صبح تا ۱۲ شب</p>
+                </div>
+            </div>
+            
+            <form class="contact-form">
+                <input type="text" placeholder="نام شما" required>
+                <input type="email" placeholder="ایمیل شما" required>
+                <input type="tel" placeholder="شماره تماس">
+                <textarea placeholder="پیام شما..." rows="5" required></textarea>
+                <button type="submit" class="btn">
+                    <i class="fas fa-paper-plane"></i>
+                    ارسال پیام
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- پاورقی -->
+    <footer>
+        <div class="container">
+            <h3 style="color: white; margin-bottom: 1rem;">GreenBox Coffee</h3>
+            <p>لذت یک قهوه فوق العاده در فضایی دلنشین</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>© کلیه حقوق برای داش عباس محفوظ است. ۱۴۰۳</p>
+        </div>
+    </footer>
+
+    <script>
+        // اسکرول نرم برای لینک های منو
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // مدیریت فرم تماس
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('پیام شما با موفقیت ارسال شد! به زودی با شما تماس خواهیم گرفت.');
+            this.reset();
+        });
+
+        // انیمیشن برای آیتم‌های منو هنگام اسکرول
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // اعمال انیمیشن به آیتم‌های منو
+        document.querySelectorAll('.menu-category').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'all 0.6s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
